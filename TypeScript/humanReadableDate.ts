@@ -19,10 +19,15 @@ const humanReadableDate = (date: Date) => {
   if (interval >= 1) {
     return string(interval, "month");
   }
+        
+  interval = Math.floor(seconds / 604800);
+  if (interval >= 1) {
+      return string(interval, "week");
+  }
 
   interval = Math.floor(seconds / 86400);
   if (interval >= 1) {
-    return string(interval, "week");
+      return string(interval, "day");
   }
 
   interval = Math.floor(seconds / 3600);

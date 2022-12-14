@@ -20,9 +20,14 @@ const humanReadableDate = (date) => {
     return string(interval, "month");
   }
 
-  interval = Math.floor(seconds / 86400);
+  interval = Math.floor(seconds / 604800);
   if (interval >= 1) {
     return string(interval, "week");
+  }
+
+  interval = Math.floor(seconds / 86400);
+  if (interval >= 1) {
+    return string(interval, "day");
   }
 
   interval = Math.floor(seconds / 3600);
@@ -34,9 +39,8 @@ const humanReadableDate = (date) => {
   if (interval >= 1) {
     return string(interval, "minute");
   }
-  
+
   return "Just now";
 };
-
 
 console.log(humanReadableDate(new Date())); // returns 'Just Now'
